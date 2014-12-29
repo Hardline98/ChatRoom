@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-
+require("db_con.php");
 $name = $_GET['user'];
 $message = $_GET['message'];
 $colour = $_GET['colour'];
@@ -10,6 +10,7 @@ $getTags = explode(",",$style);
 $time = date('h:i:s A');
 $ip = $_SERVER['REMOTE_ADDR'];
 $exMessage = str_split($message);
+$createServer = "<span style='color:magenta'><u><b>SERVER</b></u></span>";
 
 $message = preg_replace('!(www|http://[^ ]+)!i', '<a href="\1">\1</a>', $message);
 
@@ -36,7 +37,7 @@ if($exMessage[0] == "/"){
 		$command = $parameter[0];
 		$lower = strtolower($command);
 		$parameterOne = $parameter[1];
-		$parameterTwo = $parameter[2];
+		//$parameterTwo = $parameter[2];
 		if($lower == "ban"){
 			if(!in_array($parameterOne,$adminFile)){
 				$banFile = "ban.txt";
@@ -56,11 +57,9 @@ if($exMessage[0] == "/"){
 				file_put_contents($banFile,$update);
 			}
 		}else if($lower == "clear"){
-			require("db_con.php");
 			if(!$con){
 				die("Could not connect to database: ".mysql_error());
 			}else{
-				//MySQL Injection Safe-proofing
 				$sql = "TRUNCATE TABLE `chat`.`log`";
 				file_put_contents("chat.txt","");
 			}
@@ -83,6 +82,36 @@ if($exMessage[0] == "/"){
 					file_put_contents($adminFile,$update);
 				}
 			}
+		}else if($command == "say"){
+			//Make multi word parameter
+			unset($parameter[0]);
+			$make =  implode(" ",$parameter);
+			if(!$con){
+				die("Could not connect to database: ".mysql_error());
+			}else{
+				//Safe-proofing
+				$server = mysql_real_escape_string($createServer);
+				$make = mysql_real_escape_string($make);
+				$sql = "INSERT INTO `chat`.`log` (`id`,`time`,`postedBy`,`message`,`ip`)
+				VALUES
+				(NULL, '$time', '$server', '$make', 'SERVER')";
+			}
+			mysql_query($sql,$con) or die(mysql_error());
+		}else if($command == "server"){
+			//Make multi word parameter
+			unset($parameter[0]);
+			$make =  implode(" ",$parameter);
+			if(!$con){
+				die("Could not connect to database: ".mysql_error());
+			}else{
+				//Safe-proofing
+				$server = mysql_real_escape_string($createServer);
+				$make = mysql_real_escape_string($make);
+				$sql = "INSERT INTO `chat`.`log` (`id`,`time`,`postedBy`,`message`,`ip`)
+				VALUES
+				(NULL, '$time', '$server', '$make', 'SERVER')";
+			}
+			mysql_query($sql,$con) or die(mysql_error());
 		}
 	}
 }else{
@@ -90,7 +119,6 @@ if($exMessage[0] == "/"){
 	$constructTime = $time.": ";
 	$update = $current.$constructTime.$name." said ".$message."\n";
 	file_put_contents("chat.txt",$update);
-	require("db_con.php");
 	if(!$con){
 		die("Could not connect to database: ".mysql_error());
 	}else{

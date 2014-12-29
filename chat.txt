@@ -1,5 +1,0 @@
-09:57:53 PM: <span style='color:red;'>Hardline</span> said <span style='color:black;'><b>Test</b></span>
-09:57:57 PM: <span style='color:red;'>Hardline</span> said <span style='color:black;'><i></i></span>
-09:58:41 PM: <span style='color:red;'>Hardline</span> said <span style='color:black;'><i>Teast</i></span>
-09:58:46 PM: <span style='color:red;'>Hardline</span> said <span style='color:black;'><u>Hi</u></span>
-09:58:52 PM: <span style='color:red;'>Hardline</span> said <span style='color:black;'> :(</span>
