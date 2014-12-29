@@ -37,7 +37,7 @@ if($exMessage[0] == "/"){
 		$command = $parameter[0];
 		$lower = strtolower($command);
 		$parameterOne = $parameter[1];
-		//$parameterTwo = $parameter[2];
+		$parameterTwo = $parameter[2];
 		if($lower == "ban"){
 			if(!in_array($parameterOne,$adminFile)){
 				$banFile = "ban.txt";
