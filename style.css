@@ -61,6 +61,8 @@ table{
 	background-color: black;
 	width: 50px;
 	text-align: center;
+	border-radius:5px;
+	border: 1px solid #000;
 }
 .red{
 	padding: 10px;
@@ -68,6 +70,8 @@ table{
 	background-color: red;
 	width: 50px;
 	text-align: center;
+	border-radius:5px;
+	border: 1px solid #000;
 }
 .green{
 	padding: 10px;
@@ -75,6 +79,8 @@ table{
 	background-color: green;
 	width: 50px;
 	text-align: center;
+	border-radius:5px;
+	border: 1px solid #000;
 }
 .blue{
 	padding: 10px;
@@ -82,6 +88,8 @@ table{
 	background-color: blue;
 	width: 50px;
 	text-align: center;
+	border-radius:5px;
+	border: 1px solid #000;
 }
 .purple{
 	padding: 10px;
@@ -89,6 +97,8 @@ table{
 	background-color: purple;
 	width: 50px;
 	text-align: center;
+	border-radius:5px;
+	border: 1px solid #000;
 }
 .orange{
 	padding: 10px;
@@ -96,6 +106,8 @@ table{
 	background-color: orange;
 	width: 50px;
 	text-align: center;
+	border-radius:5px;
+	border: 1px solid #000;
 }
 .cyan{
 	padding: 10px;
@@ -103,4 +115,42 @@ table{
 	background-color: cyan;
 	width: 50px;
 	text-align: center;
+	border-radius:5px;
+	border: 1px solid #000;
+}
+.normal{
+	padding: 10px;
+	color: black;
+	background-color: white;
+	width: auto;
+	text-align: center;
+	border-radius:5px;
+	border: 1px solid #000;
+}
+.bold{
+	padding: 10px;
+	color: black;
+	background-color: white;
+	width: auto;
+	text-align: center;
+	border-radius:5px;
+	border: 1px solid #000;
+}
+.italic{
+	padding: 10px;
+	color: auto;
+	background-color: white;
+	width: auto;
+	text-align: center;
+	border-radius:5px;
+	border: 1px solid #000;
+}
+.underline{
+	padding: 10px;
+	color: black;
+	background-color: white;
+	width: auto;
+	text-align: center;
+	border-radius:5px;
+	border: 1px solid #000;
 }

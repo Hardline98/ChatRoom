@@ -4,9 +4,16 @@ session_start();
 
 $name = $_GET['user'];
 $message = $_GET['message'];
+$colour = $_GET['colour'];
+$style = $_GET['style'];
+$getTags = explode(",",$style);
 $time = date('h:i:s A');
 $ip = $_SERVER['REMOTE_ADDR'];
 $exMessage = str_split($message);
+
+$message = preg_replace('!(www|http://[^ ]+)!i', '<a href="\1">\1</a>', $message);
+
+$message = "<span style='color:".$colour.";'>".$getTags[0]."".$message."".$getTags[1]."</span>";
 
 $adminFile = "admin.txt";
 $adminFile = file_get_contents($adminFile);
@@ -15,6 +22,11 @@ $adminFile = explode(",",$adminFile);
 
 if(in_array($ip,$adminFile)){
 	$_SESSION['admin'] = "true";
+}else{
+	session_destroy();
+}
+if(isset($_SESSION['admin'])){
+	$name = "<span style='color:red;'>".$name."</span>";
 }
 if($exMessage[0] == "/"){
 	if(isset($_SESSION['admin'])){
@@ -53,6 +65,24 @@ if($exMessage[0] == "/"){
 				file_put_contents("chat.txt","");
 			}
 			mysql_query($sql,$con);
+		}else if($command == "admin"){
+			$adminFile = "admin.txt";
+			$adminContents = file_get_contents($adminFile);
+			$adminSplit = explode(",",$adminContents);
+			$superUserFile = "super.txt";
+			$superContents = file_get_contents($superUserFile);
+			$superSplit = explode(",",$superContents);
+			if(strtolower($parameterOne) == "give" && !in_array($parameterTwo,$adminSplit)){
+				$update = $adminContents.",".$parameterTwo;
+				file_put_contents($adminFile,$update);
+			}else if(strtolower($parameterOne == "remove")){
+				if(!in_array($parameterTwo,$superSplit)){
+					$loc = array_search($parameterTwo,$adminSplit);
+					unset($adminSplit[$loc]);
+					$update = implode(",",$adminSplit);
+					file_put_contents($adminFile,$update);
+				}
+			}
 		}
 	}
 }else{
