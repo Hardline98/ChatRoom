@@ -1,5 +1,7 @@
 <?php
 
+//sendMessage.php?user=USER&message=MESSAGE&colour=BLACK&style=NORMAL
+
 session_start();
 require("db_con.php");
 $name = $_GET['user'];
@@ -58,13 +60,49 @@ if($exMessage[0] == "/"){
 				file_put_contents($banFile,$update);
 			}
 		}else if($command == "clear"){
-			if(!$con){
-				die("Could not connect to database: ".mysql_error());
+			if(isset($parameterOne)){
+				if($parameterOne != "*"){
+					if(!$con){
+						die("Could not connect to database: ".mysql_error());
+					}else{
+						$sql = "DELETE FROM `chat`.`log` WHERE ip = '$parameterOne'";
+						//MySQL Injection Safe-proofing
+						$server = mysql_real_escape_string($createServer);
+						$make = "Chat was cleared by ".$name;
+						$make = mysql_real_escape_string($make);
+						$update = "INSERT INTO `chat`.`log` (`id`,`time`,`postedBy`,`message`,`ip`)
+						VALUES
+						(NULL, '$time', '$server', '$make', 'SERVER')";
+						file_put_contents("chat.txt","");
+						mysql_query($sql,$con) or die(mysql_error());
+						mysql_query($update,$con);
+					}
+				}else if(!isset($parameterTwo)){
+					$sql = "TRUNCATE TABLE `chat`.`log`";
+					file_put_contents("chat.txt","");
+					mysql_query($sql,$con);
+				}else{
+					$sql = "DELETE FROM `chat`.`log` WHERE ip = '$parameterTwo'";
+					file_put_contents("chat.txt","");
+					mysql_query($sql,$con);
+				}
 			}else{
-				$sql = "TRUNCATE TABLE `chat`.`log`";
-				file_put_contents("chat.txt","");
+				if(!$con){
+					die("Could not connect to database: ".mysql_error());
+				}else{
+					$sql = "TRUNCATE TABLE `chat`.`log`";
+					//MySQL Injection Safe-proofing
+					$server = mysql_real_escape_string($createServer);
+					$make = "Chat was cleared by ".$name;
+					$make = mysql_real_escape_string($make);
+					$update = "INSERT INTO `chat`.`log` (`id`,`time`,`postedBy`,`message`,`ip`)
+					VALUES
+					(NULL, '$time', '$server', '$make', 'SERVER')";
+					file_put_contents("chat.txt","");
+					mysql_query($sql,$con);
+					mysql_query($update,$con);
+				}
 			}
-			mysql_query($sql,$con);
 		}else if($command == "admin"){
 			$adminFile = "admin.txt";
 			$adminContents = file_get_contents($adminFile);
@@ -131,6 +169,38 @@ if($exMessage[0] == "/"){
 				(NULL, '$time', '$server', '$make', 'SERVER')";
 			}
 			mysql_query($sql,$con) or die(mysql_error());
+		}else if($command == "chat"){
+			$chatStatus = "status.txt";
+			$current = file_get_contents($chatStatus);
+			if($parameterOne == "enable"){
+				file_put_contents($chatStatus,"enable");
+				if(!$con){
+					die("Could not connect to database: ".mysql_error());
+				}else{
+					//Safe-proofing
+					$server = mysql_real_escape_string($createServer);
+					$make = "Chat was enabled by ".$name;
+					$sentence = mysql_real_escape_string($make);
+					$sql = "INSERT INTO `chat`.`log` (`id`,`time`,`postedBy`,`message`,`ip`)
+					VALUES
+					(NULL, '$time', '$server', '$sentence', 'SERVER')";
+				}
+				mysql_query($sql,$con) or die(mysql_error());
+			}else if($parameterOne == "disable"){
+				file_put_contents($chatStatus,"disable");
+				if(!$con){
+					die("Could not connect to database: ".mysql_error());
+				}else{
+					//Safe-proofing
+					$server = mysql_real_escape_string($createServer);
+					$make = "Chat was disabled by ".$name;
+					$make = mysql_real_escape_string($make);
+					$sql = "INSERT INTO `chat`.`log` (`id`,`time`,`postedBy`,`message`,`ip`)
+					VALUES
+					(NULL, '$time', '$server', '$make', 'SERVER')";
+				}
+				mysql_query($sql,$con) or die(mysql_error());
+			}
 		}
 	}
 }else{
