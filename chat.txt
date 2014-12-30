@@ -1,0 +1,2 @@
+05:48:31 PM: <span style='color:red;'></span> said <span style='color:black;'> hello</span>
+05:50:21 PM: <span style='color:red;'></span> said <span style='color:black;'> test</span>

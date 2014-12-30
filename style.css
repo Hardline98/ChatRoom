@@ -1,24 +1,22 @@
 /*CSS*/
 body{
 	background:grey;
+	font-size: 100%;
 }
 .box{
 	border-top: 2px solid #000;
 	border-left: 2px solid #000;
 	border-right: 2px solid #000;
 	height: 500px;
-	width: 990px;
+	width: 60%;
 	background:white;
-	border-radius:10px;
-	border-top-right-radius: 0px;
-	border-bottom-right-radius: 0px;
-	border-bottom-left-radius: 0px;
+	border-top-left-radius:10px;
 	margin-top: 30px;
-	margin-left: 300px;
 	padding: 5px;
 	overflow: scroll;
 	overflow-x: hidden;
 	font-family: Arial, Helvetica, sans-serif;
+	text-align: left;
 }
 .time{
 	width: 100px;
@@ -35,22 +33,21 @@ body{
 .input{
 	border: 2px solid #000;
 	height: 25px;
-	width: 1000px;
-	margin-left: 300px;
+	width: 60.5%;
 	margin-top: 0px;
 	background-color: white;
 }
 .nameBox{
-	width: 180px;
+	width: 13%;
 	height: 19px;
 }
 .inputBox{
-	width: 615px;
+	width: 68%;
 	height: 19px;
 }
 .inputButton{
 	height: 25px;
-	width: 96px;
+	width: 9.5%;
 }
 table{
 	font-family: Arial, Helvetica, sans-serif;
@@ -63,6 +60,7 @@ table{
 	text-align: center;
 	border-radius:5px;
 	border: 1px solid #000;
+	cursor:pointer;
 }
 .red{
 	padding: 10px;
@@ -72,6 +70,7 @@ table{
 	text-align: center;
 	border-radius:5px;
 	border: 1px solid #000;
+	cursor:pointer;
 }
 .green{
 	padding: 10px;
@@ -81,6 +80,7 @@ table{
 	text-align: center;
 	border-radius:5px;
 	border: 1px solid #000;
+	cursor:pointer;
 }
 .blue{
 	padding: 10px;
@@ -90,6 +90,7 @@ table{
 	text-align: center;
 	border-radius:5px;
 	border: 1px solid #000;
+	cursor:pointer;
 }
 .purple{
 	padding: 10px;
@@ -99,6 +100,7 @@ table{
 	text-align: center;
 	border-radius:5px;
 	border: 1px solid #000;
+	cursor:pointer;
 }
 .orange{
 	padding: 10px;
@@ -108,6 +110,7 @@ table{
 	text-align: center;
 	border-radius:5px;
 	border: 1px solid #000;
+	cursor:pointer;
 }
 .cyan{
 	padding: 10px;
@@ -117,6 +120,7 @@ table{
 	text-align: center;
 	border-radius:5px;
 	border: 1px solid #000;
+	cursor:pointer;
 }
 .normal{
 	padding: 10px;
@@ -126,6 +130,7 @@ table{
 	text-align: center;
 	border-radius:5px;
 	border: 1px solid #000;
+	cursor:pointer;
 }
 .bold{
 	padding: 10px;
@@ -135,6 +140,7 @@ table{
 	text-align: center;
 	border-radius:5px;
 	border: 1px solid #000;
+	cursor:pointer;
 }
 .italic{
 	padding: 10px;
@@ -144,6 +150,7 @@ table{
 	text-align: center;
 	border-radius:5px;
 	border: 1px solid #000;
+	cursor:pointer;
 }
 .underline{
 	padding: 10px;
@@ -153,4 +160,5 @@ table{
 	text-align: center;
 	border-radius:5px;
 	border: 1px solid #000;
+	cursor:pointer;
 }

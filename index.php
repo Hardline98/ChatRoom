@@ -70,6 +70,7 @@ $(document).ready(function(){
 	scrollTop: $('.box')[0].scrollHeight}, 2000);
 	$(".blackSel").text("^");
 	$(".normalSel").text("^");
+	$(".nameBox").val("");
 });
 
 function colour(colour){
@@ -138,7 +139,7 @@ function go(type){
 </script>
 </head>
 <body>
-
+<center>
 <div class="box"></div>
 <div class="input">
 	<span class="time">TIME</span>&nbsp;<input class="nameBox" placeholder="Username" type="text" name="name" id="name" maxlength="20"/><input class="inputBox" placeholder="Message" type="text" name="input" id="input" maxlength="100" onkeypress="return myKeyPress(event)"/><button onclick="send()" class="inputButton" >Send</button>
@@ -178,6 +179,7 @@ function go(type){
 		<td class="underlineSel"></td>
 	</tr>
 </table>
+</center>
 <input type="hidden" name="colour" class="colour" value="black" />
 <input type="hidden" name="style" class="style" value="normal" />
 </body>
