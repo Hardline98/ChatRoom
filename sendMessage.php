@@ -6,13 +6,14 @@ $name = $_GET['user'];
 $message = $_GET['message'];
 $colour = $_GET['colour'];
 $style = $_GET['style'];
-$getTags = explode(",",$style);
 $time = date('h:i:s A');
 $ip = $_SERVER['REMOTE_ADDR'];
-$exMessage = str_split($message);
-$createServer = "<span style='color:magenta'><u><b>SERVER</b></u></span>";
 
-$message = preg_replace('!(www|http://[^ ]+)!i', '<a href="\1">\1</a>', $message);
+$exMessage = str_split($message);
+
+require("enforce.php");
+
+//$message = preg_replace('!(www|http://[^ ]+)!i', '<a href="\1">\1</a>', $message);
 
 $message = "<span style='color:".$colour.";'>".$getTags[0]."".$message."".$getTags[1]."</span>";
 
@@ -35,17 +36,17 @@ if($exMessage[0] == "/"){
 		$toString = implode($exMessage);
 		$parameter = explode(" ",$toString);
 		$command = $parameter[0];
-		$lower = strtolower($command);
+		$command = strtolower($command);
 		$parameterOne = $parameter[1];
 		$parameterTwo = $parameter[2];
-		if($lower == "ban"){
+		if($command == "ban"){
 			if(!in_array($parameterOne,$adminFile)){
 				$banFile = "ban.txt";
 				$contents = file_get_contents($banFile);
 				$update = $contents.",".$parameterOne;
 				file_put_contents($banFile,$update);
 			}
-		}else if($lower == "unban"){
+		}else if($command == "unban"){
 			$banFile = "ban.txt";
 			$contents = file_get_contents($banFile);
 			$individual = explode(",",$contents);
@@ -56,7 +57,7 @@ if($exMessage[0] == "/"){
 				$update = implode(",",$individual);
 				file_put_contents($banFile,$update);
 			}
-		}else if($lower == "clear"){
+		}else if($command == "clear"){
 			if(!$con){
 				die("Could not connect to database: ".mysql_error());
 			}else{

@@ -117,7 +117,7 @@ function go(type){
 	$(normal).text("");$(bold).text("");$(italic).text("");$(underline).text("");
 	switch(type){
 		case "normal": 
-			$(".style").val(" ");
+			$(".style").val("normal");
 			$(normal).text("^");
 			break;
 		case "bold": 
@@ -132,7 +132,7 @@ function go(type){
 			$(".style").val("<u>,</u>");
 			$(underline).text("^");
 			break;
-		default: $(".style").val(" ");$(normal).text("^");
+		default: $(".style").val("normal");$(normal).text("^");
 	}
 }
 </script>
@@ -179,6 +179,6 @@ function go(type){
 	</tr>
 </table>
 <input type="hidden" name="colour" class="colour" value="black" />
-<input type="hidden" name="style" class="style" value=" " />
+<input type="hidden" name="style" class="style" value="normal" />
 </body>
 </html>

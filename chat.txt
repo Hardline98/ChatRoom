@@ -1,0 +1,2 @@
+02:01:09 AM: <span style='color:red;'>Hardline</span> said <span style='color:black;'> Test</span>
+02:01:20 AM: <span style='color:red;'>Hardline</span> said <span style='color:black;'> test</span>
