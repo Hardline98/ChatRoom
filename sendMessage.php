@@ -66,17 +66,9 @@ if($exMessage[0] == "/"){
 	$constructTime = $time.": ";
 	$update = $current.$constructTime.$name." said ".$message."\n";
 	file_put_contents("chat.txt",$update);
-	if(!$con){
-		die("Could not connect to database: ".mysql_error());
-	}else{
-		//MySQL Injection Safe-proofing
-		$name = mysql_real_escape_string($name);
-		$message = mysql_real_escape_string($message);
-		$sql = "INSERT INTO `$db`.`$table` (`id`,`time`,`postedBy`,`message`,`ip`)
-		VALUES
-		(NULL, '$time', '$name', '$message', '$ip')";
-	}
-	mysql_query($sql,$con);
+	$sql = "INSERT INTO `$db`.`$table` (`id`,`time`,`postedBy`,`message`,`ip`) VALUES (NULL, '$time', ?, ?, '$ip')";
+	$query = $handler->prepare($sql);
+	$query->execute(array($name,$message));
 }
 
 ?>

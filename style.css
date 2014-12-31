@@ -3,6 +3,14 @@ body{
 	background:grey;
 	font-size: 100%;
 }
+.body{
+	cursor:default;
+	-webkit-user-selection:none;
+	-moz-user-selection:none;
+	-ms-user-selection:none;
+	-o-user-selection:none;
+	user-selection:none;
+}
 .box{
 	border-top: 2px solid #000;
 	border-left: 2px solid #000;
@@ -17,6 +25,8 @@ body{
 	overflow-x: hidden;
 	font-family: Arial, Helvetica, sans-serif;
 	text-align: left;
+	margin-left: auto;
+	margin-right: auto;
 }
 .time{
 	width: 100px;
@@ -36,6 +46,8 @@ body{
 	width: 60.5%;
 	margin-top: 0px;
 	background-color: white;
+	margin-left: auto;
+	margin-right: auto;
 }
 .nameBox{
 	width: 13%;
@@ -51,6 +63,8 @@ body{
 }
 table{
 	font-family: Arial, Helvetica, sans-serif;
+	margin-left: auto;
+	margin-right: auto;
 }
 .black{
 	padding: 10px;
@@ -61,6 +75,11 @@ table{
 	border-radius:5px;
 	border: 1px solid #000;
 	cursor:pointer;
+	-webkit-user-selection:none;
+	-moz-user-selection:none;
+	-ms-user-selection:none;
+	-o-user-selection:none;
+	user-selection:none;
 }
 .red{
 	padding: 10px;
@@ -71,6 +90,11 @@ table{
 	border-radius:5px;
 	border: 1px solid #000;
 	cursor:pointer;
+	-webkit-user-selection:none;
+	-moz-user-selection:none;
+	-ms-user-selection:none;
+	-o-user-selection:none;
+	user-selection:none;
 }
 .green{
 	padding: 10px;
@@ -81,6 +105,11 @@ table{
 	border-radius:5px;
 	border: 1px solid #000;
 	cursor:pointer;
+	-webkit-user-selection:none;
+	-moz-user-selection:none;
+	-ms-user-selection:none;
+	-o-user-selection:none;
+	user-selection:none;
 }
 .blue{
 	padding: 10px;
@@ -91,6 +120,11 @@ table{
 	border-radius:5px;
 	border: 1px solid #000;
 	cursor:pointer;
+	-webkit-user-selection:none;
+	-moz-user-selection:none;
+	-ms-user-selection:none;
+	-o-user-selection:none;
+	user-selection:none;
 }
 .purple{
 	padding: 10px;
@@ -101,6 +135,11 @@ table{
 	border-radius:5px;
 	border: 1px solid #000;
 	cursor:pointer;
+	-webkit-user-selection:none;
+	-moz-user-selection:none;
+	-ms-user-selection:none;
+	-o-user-selection:none;
+	user-selection:none;
 }
 .orange{
 	padding: 10px;
@@ -111,6 +150,11 @@ table{
 	border-radius:5px;
 	border: 1px solid #000;
 	cursor:pointer;
+	-webkit-user-selection:none;
+	-moz-user-selection:none;
+	-ms-user-selection:none;
+	-o-user-selection:none;
+	user-selection:none;
 }
 .cyan{
 	padding: 10px;
@@ -121,6 +165,11 @@ table{
 	border-radius:5px;
 	border: 1px solid #000;
 	cursor:pointer;
+	-webkit-user-selection:none;
+	-moz-user-selection:none;
+	-ms-user-selection:none;
+	-o-user-selection:none;
+	user-selection:none;
 }
 .normal{
 	padding: 10px;
@@ -131,6 +180,11 @@ table{
 	border-radius:5px;
 	border: 1px solid #000;
 	cursor:pointer;
+	-webkit-user-selection:none;
+	-moz-user-selection:none;
+	-ms-user-selection:none;
+	-o-user-selection:none;
+	user-selection:none;
 }
 .bold{
 	padding: 10px;
@@ -141,6 +195,11 @@ table{
 	border-radius:5px;
 	border: 1px solid #000;
 	cursor:pointer;
+	-webkit-user-selection:none;
+	-moz-user-selection:none;
+	-ms-user-selection:none;
+	-o-user-selection:none;
+	user-selection:none;
 }
 .italic{
 	padding: 10px;
@@ -151,6 +210,11 @@ table{
 	border-radius:5px;
 	border: 1px solid #000;
 	cursor:pointer;
+	-webkit-user-selection:none;
+	-moz-user-selection:none;
+	-ms-user-selection:none;
+	-o-user-selection:none;
+	user-selection:none;
 }
 .underline{
 	padding: 10px;
@@ -161,4 +225,9 @@ table{
 	border-radius:5px;
 	border: 1px solid #000;
 	cursor:pointer;
+	-webkit-user-selection:none;
+	-moz-user-selection:none;
+	-ms-user-selection:none;
+	-o-user-selection:none;
+	user-selection:none;
 }

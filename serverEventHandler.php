@@ -5,7 +5,6 @@ header('Cache-Control: no-cache');
 
 include("db_query.php");
 
-
 $ip = $_SERVER['REMOTE_ADDR'];
 $helpFile = "help.txt";
 $currentHelp = file_get_contents($helpFile);

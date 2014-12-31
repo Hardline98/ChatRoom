@@ -59,6 +59,10 @@ var time = new EventSource("time.php");
 time.onmessage = function(event){
 	$(".time").html(event.data);
 };
+var counter = new EventSource("counter.php");
+counter.onmessage = function(event){
+	$(".counter").html("Users: "+event.data);
+};
 
 function myKeyPress(e){
 	if(e.keyCode == 13){
@@ -138,8 +142,7 @@ function go(type){
 }
 </script>
 </head>
-<body>
-<center>
+<body class="body">
 <div class="box"></div>
 <div class="input">
 	<span class="time">TIME</span>&nbsp;<input class="nameBox" placeholder="Username" type="text" name="name" id="name" maxlength="20"/><input class="inputBox" placeholder="Message" type="text" name="input" id="input" maxlength="100" onkeypress="return myKeyPress(event)"/><button onclick="send()" class="inputButton" >Send</button>
@@ -179,7 +182,6 @@ function go(type){
 		<td class="underlineSel"></td>
 	</tr>
 </table>
-</center>
 <input type="hidden" name="colour" class="colour" value="black" />
 <input type="hidden" name="style" class="style" value="normal" />
 </body>

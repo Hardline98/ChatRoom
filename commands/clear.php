@@ -2,46 +2,32 @@
 
 if(isset($parameterOne)){
 	if($parameterOne != "*"){
-		if(!$con){
-			die("Could not connect to database: ".mysql_error());
-		}else{
-			$sql = "DELETE FROM `$db`.`$table` WHERE ip = '$parameterOne'";
-			//MySQL Injection Safe-proofing
-			$server = mysql_real_escape_string($createServer);
-			$make = "Chat was cleared by ".$name;
-			$make = mysql_real_escape_string($make);
-			$update = "INSERT INTO `$db`.`$table` (`id`,`time`,`postedBy`,`message`,`ip`)
-			VALUES
-			(NULL, '$time', '$server', '$make', 'SERVER')";
-			file_put_contents("chat.txt","");
-			mysql_query($sql,$con) or die(mysql_error());
-			mysql_query($update,$con);
-		}
+		$sql = "DELETE FROM `$db`.`$table` WHERE ip = ?";
+		$query = $handler->prepare($sql);
+		$query->execute(array($parameterOne));
+		$make = "Chat was cleared by ".$name;
+		$sql = "INSERT INTO `$db`.`$table` (`id`,`time`,`postedBy`,`message`,`ip`) VALUES (NULL, '$time', ?, ?, 'SERVER')";
+		$query = $handler->prepare($sql);
+		$query->execute(array($createServer,$make));
+		file_put_contents("chat.txt","");
 	}else if(!isset($parameterTwo)){
 		$sql = "TRUNCATE TABLE `$db`.`$table`";
-		file_put_contents("chat.txt","");
-		mysql_query($sql,$con);
+		$handler->query($sql);
+		file_put_contents("chat.txt","");		
 	}else{
-		$sql = "DELETE FROM `$db`.`$table` WHERE ip = '$parameterTwo'";
+		$sql = "DELETE FROM `$db`.`$table` WHERE ip = ?";
+		$query = $handler->prepare($sql);
+		$query->execute(array($parameterTwo));
 		file_put_contents("chat.txt","");
-		mysql_query($sql,$con);
 	}
 }else{
-	if(!$con){
-		die("Could not connect to database: ".mysql_error());
-	}else{
-		$sql = "TRUNCATE TABLE `$db`.`$table`";
-		//MySQL Injection Safe-proofing
-		$server = mysql_real_escape_string($createServer);
-		$make = "Chat was cleared by ".$name;
-		$make = mysql_real_escape_string($make);
-		$update = "INSERT INTO `$db`.`$table` (`id`,`time`,`postedBy`,`message`,`ip`)
-		VALUES
-		(NULL, '$time', '$server', '$make', 'SERVER')";
-		file_put_contents("chat.txt","");
-		mysql_query($sql,$con);
-		mysql_query($update,$con);
-	}
+	$sql = "TRUNCATE TABLE `$db`.`$table`";
+	$handler->query($sql);
+	$make = "Chat was cleared by ".$name;
+	$sql = "INSERT INTO `$db`.`$table` (`id`,`time`,`postedBy`,`message`,`ip`) VALUES (NULL, '$time', ?, ?, 'SERVER')";
+	$query = $handler->prepare($sql);
+	$query->execute(array($createServer,$make));
+	file_put_contents("chat.txt","");
 }
-			
+
 ?>

@@ -3,15 +3,14 @@
 session_start();
 //Connect to DB
 require("db_con.php");
-$sql = mysql_query("SELECT * FROM `$db`.`$table` ORDER BY id ASC") or trigger_error(mysql_error().$sql);;
-$numrows = mysql_num_rows($sql);
+$sql = $handler->query("SELECT * FROM `$db`.`$table` ORDER BY id ASC");
 $construct = "";
-if($numrows != 0){
-	while($rows = mysql_fetch_assoc($sql)){
-		$date = $rows['time'];
-		$username = $rows['postedBy'];
-		$message = $rows['message'];
-		$ip = $rows['ip'];
+if($sql->rowCount()){
+	while($rows = $sql->fetch(PDO::FETCH_OBJ)){
+		$date = $rows->time;
+		$username = $rows->postedBy;
+		$message = $rows->message;
+		$ip = $rows->ip;
 		if(isset($_SESSION['admin'])){
 			$show = "(".$ip.")";
 		}else{

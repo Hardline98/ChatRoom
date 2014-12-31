@@ -7,8 +7,11 @@ $dbpass = "";
 $db = "chat";
 $table = "log";
 
-//Connecting
-$con = mysql_connect($host,$user,$dbpass);
-mysql_select_db($db);
+try{
+	$handler = new PDO('mysql:host='.$host.';dbname='.$db,$user,$dbpass);
+	$handler->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+}catch(PDOException $e){
+	die($e->getMessage());
+}
 
 ?>
