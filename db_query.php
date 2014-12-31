@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 //Connect to DB
 require("db_con.php");

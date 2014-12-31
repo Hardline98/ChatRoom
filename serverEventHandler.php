@@ -11,25 +11,50 @@ $currentHelp = file_get_contents($helpFile);
 $eachCurrent = explode(",",$currentHelp);
 $create = "(".$ip."|show)";
 
-$start = "<b><u>Commands:</b></u>";
-$ban = "- /ban <IP Address>";
-$unban = "- /unban <IP Address>";
-$clear = "- /clear <* / IP> <IP>  -- '*' Clears with no notification, parameter 2 only works with '*'";
-$rank = "- /rank <give / take> <IP Address>";
-$say = "- /say <message>";
-$chat = "- /chat <disable / enable>";
-$help = "- /help <show / hide>";
+$start = "<br><b><u>Commands:</b></u>";
+$need = htmlentities("<NEEDED>");
+$end = "<br><b>[OPTIONAL] ".$need."</b>";
+
+
+$away = "- /away -- Sets status to away";
+$back = "- /back -- Sets status to back";
+$ban = "- /ban <IP Address> -- Bans a given IP address";
+$chat = "- /chat <disable / enable> -- Enables or disables the chat";
+$clear = "- /clear [IP] -- IP Optional -- ";
+$clearAdmin = "- /clear <*/IP> [IP]  -- '*' Clears with no notification, parameter 2 only works with '*'";
+$helpCommand = "- /help <show / hide> -- Shows or hides the help menu";
+$kick = "- /kick <IP Address> -- Kicks a player";
+$motd = "- /motd -- Shows the server's message of the day";
+$rank = "- /rank <give / take> <rank> <IP Address> -- Gives a player a rank defined <rank>";
+$say = "- /say <message> -- Makes the server send a message";
+$time = "- /time -- Sends the current server time to all connected users";
+$unban = "- /unban <IP Address> -- Unbans a given IP Address";
 
 //Convert to html values
+$away = htmlentities($away);
+$back = htmlentities($back);
 $ban = htmlentities($ban);
-$unban = htmlentities($unban);
+$chat = htmlentities($chat);
 $clear = htmlentities($clear);
+$helpCommand = htmlentities($helpCommand);
+$kick = htmlentities($kick);
+$motd = htmlentities($motd);
 $rank = htmlentities($rank);
 $say = htmlentities($say);
-$chat = htmlentities($chat);
-$help = htmlentities($help);
+$time = htmlentities($time);
+$unban = htmlentities($unban);
 
-$help = $start."<br>".$ban."<br>".$unban."<br>".$clear."<br>".$rank."<br>".$say."<br>".$chat."<br>".$help."<br>";
+if(!isset($_SESSION['mod']) && !isset($_SESSION['admin'])){
+	$help = $start."<br>".$away."<br>".$back."<br>".$helpCommand."<br>".$end;
+}
+
+if(isset($_SESSION['mod'])){
+	$help = $start."<br>".$away."<br>".$back."<br>".$ban."<br>".$chat."<br>".$clear."<br>".$helpCommand."<br>".$kick."<br>".$motd."<br>".$say."<br>".$time."<br>".$unban."<br>".$end;
+}
+if(isset($_SESSION['admin'])){
+	$help = $start."<br>".$away."<br>".$back."<br>".$ban."<br>".$chat."<br>".$clearAdmin."<br>".$helpCommand."<br>".$kick."<br>".$motd."<br>".$rank."<br>".$say."<br>".$time."<br>".$unban."<br>".$end;
+}
+
 //Help menu
 if(in_array($create,$eachCurrent)){
 	$construct = $construct.$help;
