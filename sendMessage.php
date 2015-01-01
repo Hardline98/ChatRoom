@@ -3,6 +3,7 @@
 //sendMessage.php?user=USER&message=MESSAGE&colour=BLACK&style=NORMAL
 
 session_start();
+
 require("db_con.php");
 $name = $_GET['user'];
 $message = $_GET['message'];
@@ -17,7 +18,7 @@ require("enforce.php");
 
 //$message = preg_replace('!(www|http://[^ ]+)!i', '<a href="\1">\1</a>', $message);
 
-$message = "<span style='color:".$colour.";'>".$getTags[0]."".$message."".$getTags[1]."</span>";
+$message = "<span style='color:".$colour.";'> ".$getTags[0]."".$message."".$getTags[1]." </span>";
 
 $modFile = "mod.txt";
 $modFile = file_get_contents($modFile);
@@ -75,6 +76,7 @@ if($exMessage[0] == "/"){
 		$command = strtolower($command);
 		$parameterOne = $parameter[1];
 		$parameterTwo = $parameter[2];
+		$parameterThree = $parameter[3];
 		if($command == "ban"){
 			include("commands/admin/ban.php");
 		}else if($command == "unban"){
@@ -93,6 +95,12 @@ if($exMessage[0] == "/"){
 			include("commands/admin/chat.php");
 		}else if($command == "help"){
 			include("commands/admin/help.php");
+		}else if($command == "away"){
+			include("commands/admin/away.php");
+		}else if($command == "back"){
+			include("commands/admin/back.php");
+		}else if($command == "info"){
+			include("commands/admin/info.php");
 		}
 	}
 	if(isset($_SESSION['mod'])){
@@ -103,6 +111,7 @@ if($exMessage[0] == "/"){
 		$command = strtolower($command);
 		$parameterOne = $parameter[1];
 		$parameterTwo = $parameter[2];
+		$parameterThree = $parameter[3];
 		if($command == "ban"){
 			include("commands/mod/ban.php");
 		}else if($command == "unban"){
@@ -116,7 +125,13 @@ if($exMessage[0] == "/"){
 		}else if($command == "chat"){
 			include("commands/mod/chat.php");
 		}else if($command == "help"){
-			include("commands/admin/help.php");
+			include("commands/mod/help.php");
+		}else if($command == "away"){
+			include("commands/mod/away.php");
+		}else if($command == "back"){
+			include("commands/mod/back.php");
+		}else if($command == "info"){
+			include("commands/mod/info.php");
 		}
 	}
 	if(!isset($_SESSION['mod']) && !isset($_SESSION['admin'])){
@@ -127,20 +142,17 @@ if($exMessage[0] == "/"){
 		$command = strtolower($command);
 		$parameterOne = $parameter[1];
 		$parameterTwo = $parameter[2];
-		if($command == "ban"){
-			include("commands/mod/ban.php");
-		}else if($command == "unban"){
-			include("commands/mod/unban.php");
-		}else if($command == "clear"){
-			include("commands/mod/clear.php");
-		}else if($command == "say"){
-			include("commands/mod/say.php");
-		}else if($command == "server"){
-			include("commands/mod/say.php");
-		}else if($command == "chat"){
-			include("commands/mod/chat.php");
+		$parameterThree = $parameter[3];
+		if($command == "away"){
+			include("commands/default/away.php");
+		}else if($command == "back"){
+			include("commands/default/back.php");
 		}else if($command == "help"){
-			include("commands/admin/help.php");
+			include("commands/default/help.php");
+		}else if($command == "away"){
+			include("commands/default/away.php");
+		}else if($command == "back"){
+			include("commands/default/back.php");
 		}
 	}
 }else{
@@ -148,9 +160,10 @@ if($exMessage[0] == "/"){
 	$constructTime = $time.": ";
 	$update = $current.$constructTime.$colour." said ".$message."\n";
 	file_put_contents("chat.txt",$update);
-	$sql = "INSERT INTO `$db`.`$table` (`id`,`time`,`postedBy`,`message`,`ip`) VALUES (NULL, '$time', ?, ?, '$ip')";
+	$sql = "INSERT INTO `$db`.`$table` (`time`,`postedBy`,`message`,`ip`) VALUES ('$time', ?, ?, '$ip')";
 	$query = $handler->prepare($sql);
 	$query->execute(array($colour,$message));
+	echo "In!";
 }
 
 ?>

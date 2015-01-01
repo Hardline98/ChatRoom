@@ -44,9 +44,7 @@ var messages = [];
 var source = new EventSource("serverEventHandler.php");
 source.onmessage = function(event){
 	if(messages.indexOf(event.data) != -1){
-		//$(".box").html(event.data);
-		$('.box').animate({
-		scrollTop: $('.box')[0].scrollHeight}, 2000);
+		
 	}else{
 		$(".box").html(event.data);
 		messages = [event.data];

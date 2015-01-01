@@ -1,5 +1,7 @@
 <?php
+
 session_start();
+
 //Connect to DB
 require("db_con.php");
 $sql = $handler->query("SELECT * FROM `$db`.`$table` ORDER BY id ASC");
@@ -10,7 +12,7 @@ if($sql->rowCount()){
 		$username = $rows->postedBy;
 		$message = $rows->message;
 		$ip = $rows->ip;
-		if(isset($_SESSION['admin'])){
+		if(isset($_SESSION['admin']) || isset($_SESSION['mod'])){
 			$show = "(".$ip.")";
 		}else{
 			$show = "";

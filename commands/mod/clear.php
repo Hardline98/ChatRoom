@@ -1,7 +1,7 @@
 <?php
 
 if(trim($name) == ""){
-	$colour = "an <span style='color:red'>admin</span>";
+	$colour = "a <span style='color:blue'>moderator</span>";
 }
 
 if(isset($parameterOne)){
