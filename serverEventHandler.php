@@ -53,12 +53,14 @@ if(isset($_SESSION['admin'])){
 	$help = $start."<br>".$away."<br>".$back."<br>".$ban."<br>".$chat."<br>".$clearAdmin."<br>".$helpCommand."<br>".$info."<br>".$kick."<br>".$rank."<br>".$say."<br>".$unban."<br>".$end;
 }
 
-//Help menu
+//$construct = $construct."<br> There are ".$userCount." users here.";
+
 if(in_array($create,$eachCurrent)){
 	$construct = $construct.$help;
 }
 
-echo "data: ".$construct."\n\n";
+echo "retry: 10\n
+data: ".$construct."\n\n";
 
 ob_flush();
 flush();

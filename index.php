@@ -11,6 +11,11 @@ var ban = new EventSource("bans.php");
 ban.onmessage = function(event){
 	var toString = String(event.data);
 	if(toString == "disabled"){
+		//var value = "";
+		//$.ajax({
+			//url: "userCount.php",
+			//data: { value: value }
+		//});
 		$(".nameBox").prop('disabled',true);
 		$(".inputBox").prop('disabled',true);
 		$(".inputButton").prop('disabled',true);
@@ -43,6 +48,10 @@ function send(){
 var messages = [];
 var source = new EventSource("serverEventHandler.php");
 source.onmessage = function(event){
+	$.ajax({
+		url: "userCount.php",
+		data: { user: "" }
+	});
 	if(messages.indexOf(event.data) != -1){
 		
 	}else{
@@ -143,7 +152,7 @@ function go(type){
 <body class="body">
 <div class="box"></div>
 <div class="input">
-	<span class="time">TIME</span>&nbsp;<input class="nameBox" placeholder="Username" type="text" name="name" id="name" maxlength="20"/><input class="inputBox" placeholder="Message" type="text" name="input" id="input" maxlength="100" onkeypress="return myKeyPress(event)"/><button onclick="send()" class="inputButton" >Send</button>
+	<span class="time"><?php echo date('h:i:s A'); ?></span>&nbsp;<input class="nameBox" placeholder="Username" type="text" name="name" id="name" maxlength="20"/><input class="inputBox" placeholder="Message" type="text" name="input" id="input" maxlength="100" onkeypress="return myKeyPress(event)"/><button onclick="send()" class="inputButton" >Send</button>
 </div>
 
 <table>

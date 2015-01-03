@@ -15,7 +15,8 @@ if(in_array($ip,$explode)){
 	$disabled = "";
 }
 
-echo "data: ".$disabled."\n\n";
+echo "retry: 100\n
+data: ".$disabled."\n\n";
 
 ob_flush();
 flush();

@@ -23,4 +23,25 @@ if($sql->rowCount()){
 	$construct = "";
 }
 
+/*$countTable = "users";
+$sql = $handler->query("SELECT * FROM `$db`.`$countTable` ORDER BY id ASC");
+if($sql->rowCount()){
+	while($rows = $sql->fetch(PDO::FETCH_OBJ)){
+		$count = $rows-id;
+	}
+}else{
+	$count = 0;
+}
+
+$userCountFile = "users.txt";
+$userContents = file_get_contents($userCountFile);
+if($userContents != $count){
+	$sql = "TRUNCATE TABLE `$db`.`$countTable`";
+	$handler->query($sql);
+	file_put_contents($userCountFile,$count);
+	$userCount = $count;
+}else{
+	$userCount = $userContents;
+}*/
+
 ?>
