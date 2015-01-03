@@ -1,7 +1,8 @@
 /*CSS*/
 body{
 	background:grey;
-	font-size: 100%;
+	font-size: 1.7vw;
+	font-size: 1.7vh;
 }
 .body{
 	cursor:default;
@@ -11,30 +12,62 @@ body{
 	-o-user-selection:none;
 	user-selection:none;
 }
+.collect{
+	/*border-top: 2px solid #000;
+	border-left: 2px solid #000;
+	border-right: 2px solid #000;*/
+	height: 70%;
+	width: 60%;
+	margin-top: 1%;
+	padding: 0.2%;
+	font-family: Arial, Helvetica, sans-serif;
+	margin-left: auto;
+	margin-right: auto;
+}
 .box{
 	border-top: 2px solid #000;
 	border-left: 2px solid #000;
 	border-right: 2px solid #000;
 	height: 500px;
-	width: 60%;
+	width: 98%;
 	background:white;
 	border-top-left-radius:10px;
-	margin-top: 30px;
-	padding: 5px;
+	margin-top: 1%;
+	padding: 1%;
 	overflow: scroll;
 	overflow-x: hidden;
 	font-family: Arial, Helvetica, sans-serif;
 	text-align: left;
-	margin-left: auto;
-	margin-right: auto;
+}
+.main{
+	width:100%;
+}
+.timeTable{
+	width:9%;
+}
+.nameTable{
+	width: 10%;
+	margin: 0%;
+}
+.inputTable{
+	width:62%;
+}
+.sendTable{
+	width:10%;
+}
+.soundCheckTable{
+	width: 8%;
+	font-size: 0.6vh;
+	font-size: 0.6vw;
 }
 .time{
-	width: 100px;
+	width: 100%;
 	background-color: white;
-	padding:2px;
-	padding-bottom:4px;
-	margin-left:2px;
+	padding:1%;
+	margin-left:1%;
 	font-family: Arial, Helvetica, sans-serif;
+	font-size: 0.82vh;
+	font-size: 0.82vw;
 }
 .box > a{
 	color:#0099FF;
@@ -42,26 +75,67 @@ body{
 }
 .input{
 	border: 2px solid #000;
-	height: 25px;
-	width: 60.5%;
+	height: 30px;
+	width: 100%;
 	margin-top: 0px;
+	padding-top:0px;
 	background-color: white;
 	margin-left: auto;
 	margin-right: auto;
 }
 .nameBox{
-	width: 13%;
-	height: 19px;
+	width: 98%;
+	height: 20px;
+	border: 1px solid black;
+	padding-left: 2px;
+	background-color: #F0F0F0;
+}
+.nameBox:focus{
+	width: 98%;
+	height: 20px;
+	border: 1px solid black;
+	padding-left: 2px;
+	background-color: #F0F0F0;
+	outline-color: red;
 }
 .inputBox{
-	width: 68%;
-	height: 19px;
+	width: 99.5%;
+	height: 20px;
+	border: 1px solid black;
+	padding-left: 2px;
+	background-color: #F0F0F0;
+}
+.inputBox:focus{
+	width: 99.5%;
+	height: 20px;
+	border: 1px solid black;
+	padding-left: 2px;
+	background-color: #F0F0F0;
+	outline-color: red;
 }
 .inputButton{
-	height: 25px;
-	width: 9.5%;
+	height: 24px;
+	border: 1px solid black;
+	width: 100%;
+	background-color: #3399FF;
+	color: white;
+	outline-color: transparent;
+	outline-style: none;
 }
-table{
+.inputButton:active{
+	height: 22px;
+	border: 1px solid black;
+	width: 99%;
+	background-color: #2E8AE6;
+	color: white;
+	outline-color: transparent;
+	outline-style: none;
+}
+.disabledButton{
+	background-color: #FF8080;
+	color: white;
+}
+.options{
 	font-family: Arial, Helvetica, sans-serif;
 	margin-left: auto;
 	margin-right: auto;

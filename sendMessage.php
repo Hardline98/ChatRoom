@@ -34,7 +34,6 @@ while($i++ < 1){
 		unset($_SESSION['mod']);
 		unset($_SESSION['admin']);
 		$_SESSION['default'] = "true";
-		echo "Default";
 		break;
 	}
 	if(in_array($ip,$modFile)){
@@ -45,15 +44,12 @@ while($i++ < 1){
 	}else if(!in_array($ip,$modFile) && !in_array($ip,$adminFile)){
 		unset($_SESSION['mod']);
 		$_SESSION['default'] = "true";
-		echo "Mod";
-		echo "Default";
 		break;
 	}
 	if(in_array($ip,$adminFile)){
 		unset($_SESSION['default']);
 		unset($_SESSION['mod']);
 		$_SESSION['admin'] = "true";
-		echo "Admin";
 		break;
 	}else if(!in_array($ip,$adminFile)){
 		unset($_SESSION['admin']);
