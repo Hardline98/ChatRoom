@@ -9,12 +9,27 @@ $name = $_GET['user'];
 $message = $_GET['message'];
 $colour = $_GET['colour'];
 $style = $_GET['style'];
-$time = date('h:i:s A');
+$time = date('h:i:s');
 $ip = $_SERVER['REMOTE_ADDR'];
 
 $exMessage = str_split($message);
 
 require("enforce.php");
+
+function emoji($string){
+	//Character replacing
+	$string = str_ireplace(":)","&#9786;",$string);
+	$string = str_ireplace(":(","&#9785;",$string);
+	$string = str_ireplace(":-)","&#9787;",$string);
+	$string = str_replace("=3","&#9825;",$string);
+	$string = str_replace("./","&#9834;",$string);
+	$string = str_replace("//","&#9835;",$string);
+	$string = str_replace("/=/","&#9836;",$string);
+	$string = str_replace(">8","&#9988;",$string);
+	return $string;
+}
+
+$message = emoji($message);
 
 //$message = preg_replace('!(www|http://[^ ]+)!i', '<a href="\1">\1</a>', $message);
 
@@ -67,6 +82,7 @@ if(isset($_SESSION['mod'])){
 if(isset($_SESSION['admin'])){
 	$colour = "<span style='color:red;'>".$name."</span>";
 }
+
 if($exMessage[0] == "/"){
 	if(isset($_SESSION['admin'])){
 		unset($exMessage[0]);
@@ -101,6 +117,8 @@ if($exMessage[0] == "/"){
 			include("commands/admin/back.php");
 		}else if($command == "info"){
 			include("commands/admin/info.php");
+		}else if($command == "change"){
+			include("commands/admin/change.php");
 		}
 	}
 	if(isset($_SESSION['mod'])){

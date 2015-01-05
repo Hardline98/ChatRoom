@@ -43,7 +43,7 @@ body{
 	width:100%;
 }
 .timeTable{
-	width:9%;
+	width:7%;
 }
 .nameTable{
 	width: 10%;
@@ -56,7 +56,7 @@ body{
 	width:10%;
 }
 .soundCheckTable{
-	width: 8%;
+	width: 10%;
 	font-size: 0.6vh;
 	font-size: 0.6vw;
 }
@@ -140,11 +140,19 @@ body{
 	margin-left: auto;
 	margin-right: auto;
 }
+.colourTd{
+	width: 7%;
+	padding: 1%;
+}
+.styleTd{
+	width: auto;
+	padding: 1%;
+}
 .black{
 	padding: 10px;
 	color: white;
 	background-color: black;
-	width: 50px;
+	width: 100%;
 	text-align: center;
 	border-radius:5px;
 	border: 1px solid #000;
@@ -159,7 +167,7 @@ body{
 	padding: 10px;
 	color: black;
 	background-color: red;
-	width: 50px;
+	width: 100%;
 	text-align: center;
 	border-radius:5px;
 	border: 1px solid #000;
@@ -174,7 +182,7 @@ body{
 	padding: 10px;
 	color: black;
 	background-color: green;
-	width: 50px;
+	width: 100%;
 	text-align: center;
 	border-radius:5px;
 	border: 1px solid #000;
@@ -189,7 +197,7 @@ body{
 	padding: 10px;
 	color: white;
 	background-color: blue;
-	width: 50px;
+	width: 100%;
 	text-align: center;
 	border-radius:5px;
 	border: 1px solid #000;
@@ -204,7 +212,7 @@ body{
 	padding: 10px;
 	color: white;
 	background-color: purple;
-	width: 50px;
+	width: 100%;
 	text-align: center;
 	border-radius:5px;
 	border: 1px solid #000;
@@ -219,7 +227,7 @@ body{
 	padding: 10px;
 	color: black;
 	background-color: orange;
-	width: 50px;
+	width: 100%;
 	text-align: center;
 	border-radius:5px;
 	border: 1px solid #000;
@@ -234,7 +242,7 @@ body{
 	padding: 10px;
 	color: black;
 	background-color: cyan;
-	width: 50px;
+	width: 100%;
 	text-align: center;
 	border-radius:5px;
 	border: 1px solid #000;
@@ -249,7 +257,7 @@ body{
 	padding: 10px;
 	color: black;
 	background-color: white;
-	width: auto;
+	width: 100%;
 	text-align: center;
 	border-radius:5px;
 	border: 1px solid #000;
@@ -264,7 +272,7 @@ body{
 	padding: 10px;
 	color: black;
 	background-color: white;
-	width: auto;
+	width: 100%;
 	text-align: center;
 	border-radius:5px;
 	border: 1px solid #000;
@@ -279,7 +287,7 @@ body{
 	padding: 10px;
 	color: auto;
 	background-color: white;
-	width: auto;
+	width: 100%;
 	text-align: center;
 	border-radius:5px;
 	border: 1px solid #000;
@@ -294,7 +302,7 @@ body{
 	padding: 10px;
 	color: black;
 	background-color: white;
-	width: auto;
+	width: 100%;
 	text-align: center;
 	border-radius:5px;
 	border: 1px solid #000;

@@ -6,7 +6,7 @@ header('Cache-Control: no-cache');
 $timeFile = "time.txt";
 $currentTime = file_get_contents($timeFile);
 
-$time = date('h:i:s A');
+$time = date('h:i:s');
 echo "retry: 100\n
 data: ".$time."\n\n";
 

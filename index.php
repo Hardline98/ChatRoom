@@ -97,6 +97,15 @@ function testStuff(){
 	}
 }
 
+//User looking at page
+var focus;
+window.onfocus = function(){
+	focus = "true";
+};
+window.onblur = function(){
+	focus = "false";
+};
+
 var messages = [];
 var source = new EventSource("serverEventHandler.php");
 source.onmessage = function(event){
@@ -112,24 +121,26 @@ source.onmessage = function(event){
 		$('.box').animate({
 		scrollTop: $('.box')[0].scrollHeight}, 2000);
 		if($(".soundCheck").prop("checked")){
-			var dataString = String(event.data);
-			var checkEmpty;
-			var splitData = dataString.split("");
-			if(splitData.slice(96,112) == "C,h,a,t, ,w,a,s, ,c,l,e,a,r,e,d"){
-				if(splitData[250] === undefined){
+			if(focus == "false"){
+				var dataString = String(event.data);
+				var checkEmpty;
+				var splitData = dataString.split("");
+				if(splitData.slice(96,112) == "C,h,a,t, ,w,a,s, ,c,l,e,a,r,e,d"){
+					if(splitData[250] === undefined){
+						checkEmpty = "true";
+					}else{
+						checkEmpty = "false";
+					}
+				}else if(dataString.trim() == ""){
 					checkEmpty = "true";
 				}else{
 					checkEmpty = "false";
 				}
-			}else if(dataString.trim() == ""){
-				checkEmpty = "true";
-			}else{
-				checkEmpty = "false";
-			}
-			if(checkEmpty == "true"){
-				clearChat.play();
-			}else{
-				newMessage.play();
+				if(checkEmpty == "true"){
+					clearChat.play();
+				}else{
+					newMessage.play();
+				}
 			}
 		}
 	}
@@ -215,6 +226,7 @@ function go(type){
 </script>
 </head>
 <body class="body">
+<!--<img src="logo.png" height="150" width="350" alt="PHP Chat" />-->
 <div class="collect">
 	<div class="box">
 	
@@ -222,7 +234,7 @@ function go(type){
 		<div class="input">
 			<table class="main">
 				<tr>
-					<td class="timeTable"><span class="time"><?php echo date('h:i:s A'); ?></span></td>
+					<td class="timeTable"><span class="time"><?php echo date('h:i:s'); ?></span></td>
 					<td class="nameTable"><input class="nameBox" placeholder="Username" type="text" name="name" id="name" maxlength="20" onkeypress="return myKeyPress(event)"/></td>
 					<td class="inputTable"><input class="inputBox" placeholder="Message" type="text" name="input" id="input" maxlength="100" onkeypress="return myKeyPress(event)"/></td>
 					<td class="sendTable"><button onclick="send()" class="inputButton" >Send</button></td>
@@ -233,20 +245,19 @@ function go(type){
 
 		<table class="options">
 			<tr>
-				<td><div class="black" onclick="colour('black')">Black</div></td>
-				<td><div class="red" onclick="colour('red')">Red</div></td>
-				<td><div class="green" onclick="colour('green')">Green</div></td>
-				<td><div class="blue" onclick="colour('blue')">Blue</div></td>
-				<td><div class="purple" onclick="colour('purple')">Purple</div></td>
-				<td><div class="orange" onclick="colour('orange')">Orange</div></td>
-				<td><div class="cyan" onclick="colour('cyan')">Cyan</div></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td><div class="normal" onclick="go('normal')">Normal</div></td>
-				<td><div class="bold" onclick="go('bold')"><b>Bold</b></div></td>
-				<td><div class="italic" onclick="go('italic')"><i>Italic</i></div></td>
-				<td><div class="underline" onclick="go('underline')"><u>Underline</u></div></td>
+				<td class="colourTd"><div class="black" onclick="colour('black')">Black</div></td>
+				<td class="colourTd"><div class="red" onclick="colour('red')">Red</div></td>
+				<td class="colourTd"><div class="green" onclick="colour('green')">Green</div></td>
+				<td class="colourTd"><div class="blue" onclick="colour('blue')">Blue</div></td>
+				<td class="colourTd"><div class="purple" onclick="colour('purple')">Purple</div></td>
+				<td class="colourTd"><div class="orange" onclick="colour('orange')">Orange</div></td>
+				<td class="colourTd"><div class="cyan" onclick="colour('cyan')">Cyan</div></td>
+				<td class="colourTd"></td>
+				<td class="styleTd"><div class="normal" onclick="go('normal')">Normal</div></td>
+				<td class="styleTd"><div class="bold" onclick="go('bold')"><b>Bold</b></div></td>
+				<td class="styleTd"><div class="italic" onclick="go('italic')"><i>Italic</i></div></td>
+				<td class="styleTd"><div class="underline" onclick="go('underline')"><u>Underline</u></div></td>
+				<td class="colourTd"></td>
 			</tr>
 			<tr style="text-align:center">
 				<td class="blackSel"></td>
@@ -257,12 +268,11 @@ function go(type){
 				<td class="orangeSel"></td>
 				<td class="cyanSel"></td>
 				<td></td>
-				<td></td>
-				<td></td>
 				<td class="normalSel"></td>
 				<td class="boldSel"></td>
 				<td class="italicSel"></td>
 				<td class="underlineSel"></td>
+				<td class="colourTd"></td>
 			</tr>
 		</table>
 </div>

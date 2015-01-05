@@ -13,13 +13,14 @@ $create = "(".$ip."|show)";
 
 $start = "<br><b><u>Commands:</b></u>";
 $need = htmlentities("<NEEDED>");
-$end = "<br><b>[OPTIONAL] ".$need."</b>";
+$end = "<br><b>[OPTIONAL],  ".$need."</b>";
 
 
 $away = "- /away -- Sets status to away";
 $back = "- /back -- Sets status to back";
 $ban = "- /ban <IP Address> -- Bans a given IP address";
 $chat = "- /chat <disable / enable> -- Enables or disables the chat";
+$change = "- /change <Time> <IP Address> <New message> -- Changes a defined message in the chat's history";
 $clear = "- /clear [IP] -- IP Optional -- ";
 $clearAdmin = "- /clear <*/IP> [IP]  -- '*' Clears with no notification, parameter 2 only works with '*'";
 $helpCommand = "- /help <show / hide> -- Shows or hides the help menu";
@@ -34,6 +35,7 @@ $away = htmlentities($away);
 $back = htmlentities($back);
 $ban = htmlentities($ban);
 $chat = htmlentities($chat);
+$change = htmlentities($change);
 $clear = htmlentities($clear);
 $helpCommand = htmlentities($helpCommand);
 $info = htmlentities($info);
@@ -50,7 +52,7 @@ if(isset($_SESSION['mod'])){
 	$help = $start."<br>".$away."<br>".$back."<br>".$ban."<br>".$chat."<br>".$clear."<br>".$helpCommand."<br>".$info."<br>".$kick."<br>".$say."<br>".$unban."<br>".$end;
 }
 if(isset($_SESSION['admin'])){
-	$help = $start."<br>".$away."<br>".$back."<br>".$ban."<br>".$chat."<br>".$clearAdmin."<br>".$helpCommand."<br>".$info."<br>".$kick."<br>".$rank."<br>".$say."<br>".$unban."<br>".$end;
+	$help = $start."<br>".$away."<br>".$back."<br>".$ban."<br>".$chat."<br>".$change."<br>".$clearAdmin."<br>".$helpCommand."<br>".$info."<br>".$kick."<br>".$rank."<br>".$say."<br>".$unban."<br>".$end;
 }
 
 //$construct = $construct."<br> There are ".$userCount." users here.";
